@@ -160,10 +160,14 @@ namespace NetChess
                         break;
                 }
 
-                if(board[i].current.isWhite)
-                    Console.BackgroundColor = ConsoleColor.White;
+                if (board[i].position.Item1 + board[i].position.Item2 % 2 == 0)
+                    Console.BackgroundColor = ConsoleColor.Green;
+                else Console.BackgroundColor = ConsoleColor.DarkYellow;
+
+                if (board[i].current.isWhite)
+                    Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(symbol);
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Black;
             }
         }
         static boardPosition[] getPieces(piece[] pieces, boardPosition[] board)
@@ -174,8 +178,7 @@ namespace NetChess
                 {
                     if(pieces[j].position == board[i].position)
                     {
-                        board[i].current.type = pieces[j].type;
-                        board[i].current.isWhite = pieces[j].isWhite;
+                        board[i].current = pieces[j];
                     }
                 }
             }
