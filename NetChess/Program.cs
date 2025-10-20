@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -172,7 +173,21 @@ namespace NetChess
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
             }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Pawn: P | Bishop: B | Knight: H | Rook: R | Queen: Q | King: K");
         }
+
+        static piece[] moveAlgebraic(piece[] pieces)
+        {
+            Console.Write("Notation: ");
+
+
+
+            return pieces;
+        }
+
         static boardPosition[] getPieces(piece[] pieces, boardPosition[] board)
         {
             for(int i = 0; i < board.Length; i++)
@@ -193,14 +208,9 @@ namespace NetChess
             piece[] pieces = initialisePieces();
             // Declaration
 
-            while(true)
-            {
-                Console.Clear();
-                board = getPieces(pieces, board);
-                displayBoard(board);
-                Console.ReadKey();
-            }
-            
+            Console.Clear();
+            board = getPieces(pieces, board);
+            displayBoard(board);
         }
     }
 }
