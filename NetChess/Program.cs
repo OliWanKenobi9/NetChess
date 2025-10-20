@@ -23,17 +23,16 @@ namespace NetChess
         static boardPosition[] initialiseBoard()
         {
             boardPosition[] board = new boardPosition[64];
+            int index = 0;
 
-            for (int i = 0; i < 64; i++)
+            for (int j = 0; j < 8; j++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int h = 0; h < 8; h++)
                 {
-                    for (int h = 0; h < 8; h++)
-                    {
-                        board[i].position = (j+1, h+1);
-                        board[i].current.position = board[i].position;
-                        board[i].current.type = pieceType.Empty;
-                    }
+                    board[index].position = (j + 1, h + 1);
+                    board[index].current.position = board[index].position;
+                    board[index].current.type = pieceType.Empty;
+                    index++;
                 }
             }
             return board;
@@ -52,7 +51,7 @@ namespace NetChess
             {
                 pieces[i].type = pieceType.Pawn;
                 pieces[i].isWhite = false;
-                pieces[i].position = (2, i+1);
+                pieces[i].position = (7, i - 7);
             }
 
 
@@ -108,20 +107,20 @@ namespace NetChess
 
 
             pieces[27].type = pieceType.King;
-            pieces[27].position = (1, 4);
+            pieces[27].position = (1, 5);
             pieces[27].isWhite = true;
 
             pieces[28].type = pieceType.King;
-            pieces[28].position = (8, 5);
+            pieces[28].position = (8, 4);
             pieces[28].isWhite = false;
 
 
             pieces[29].type = pieceType.Queen;
-            pieces[29].position = (1, 5);
+            pieces[29].position = (1, 4);
             pieces[29].isWhite = true;
 
             pieces[30].type = pieceType.Queen;
-            pieces[30].position = (8, 4);
+            pieces[30].position = (8, 5);
             pieces[30].isWhite = false;
 
             return pieces;
@@ -131,43 +130,48 @@ namespace NetChess
             for(int i = 0; i < board.Length; i++)
             {
                 string symbol = "";
-                if (board[i].position.Item1 == 9 || board[i].position.Item1 == 17 || board[i].position.Item1 == 25 || board[i].position.Item1 == 33 || board[i].position.Item1 == 41 || board[i].position.Item1 == 49 || board[i].position.Item1 == 57)
-                {
-                    Console.WriteLine();
-                }
+                
                 switch (board[i].current.type)
                 {
                     case pieceType.Pawn:
-                        symbol = "P";
+                        symbol = " P ";
+                        symbol = " P ";
                         break;
                     case pieceType.Bishop:
-                        symbol = "B";
+                        symbol = " B ";
                         break;
                     case pieceType.Knight:
-                        symbol = "H";
+                        symbol = " H ";
                         break;
                     case pieceType.Rook:
-                        symbol = "R";
+                        symbol = " R ";
                         break;
                     case pieceType.Queen:
-                        symbol = "Q";
+                        symbol = " Q ";
                         break;
                     case pieceType.King:
-                        symbol = "K";
+                        symbol = " K ";
                         break;
                     case pieceType.Empty:
-                        symbol = " ";
+                        symbol = "   ";
                         break;
                 }
 
-                if (board[i].position.Item1 + board[i].position.Item2 % 2 == 0)
+                if (i % 8 == 0 && i != 0)
+                {
+                    Console.WriteLine();
+                }
+
+                if ((board[i].position.Item1 + board[i].position.Item2) % 2 == 0)
                     Console.BackgroundColor = ConsoleColor.Green;
                 else Console.BackgroundColor = ConsoleColor.DarkYellow;
 
                 if (board[i].current.isWhite)
                     Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(symbol);
-                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
             }
         }
         static boardPosition[] getPieces(piece[] pieces, boardPosition[] board)
