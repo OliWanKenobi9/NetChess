@@ -135,7 +135,6 @@ namespace NetChess
                 {
                     case pieceType.Pawn:
                         symbol = " P ";
-                        symbol = " P ";
                         break;
                     case pieceType.Bishop:
                         symbol = " B ";
@@ -194,10 +193,14 @@ namespace NetChess
             piece[] pieces = initialisePieces();
             // Declaration
 
-            board = getPieces(pieces, board);
-            displayBoard(board);
-
-            Console.ReadKey();
+            while(true)
+            {
+                Console.Clear();
+                board = getPieces(pieces, board);
+                displayBoard(board);
+                Console.ReadKey();
+            }
+            
         }
     }
 }
