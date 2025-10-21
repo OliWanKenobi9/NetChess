@@ -17,8 +17,8 @@ Rook: R
 Queen: Q
 King: K
 
-| Piece        | Abbreviation           | Rule  |
-| ------------- |:-------------:| -----:|
-| Pawn      | P | Can move 2 fields forward on 1st move; 1 field for the rest of the game; Can attack 1 field diagonally |
-| Bishop      | B      |   Yes. |
-| Knight | H      |    exists |
+| Piece        | Abbreviation           | 
+| ------------- |:-------------:|
+| Pawn      | P |
+| Bishop      | B      |
+| Knight | H      |
