@@ -179,7 +179,7 @@ namespace NetChess
             Console.WriteLine("Pawn: P | Bishop: B | Knight: H | Rook: R | Queen: Q | King: K");
         }
 
-        static piece[] moveAlgebraic(piece[] pieces, boardPosition[] board)
+        static piece[] moveAlgebraic(piece[] pieces, boardPosition[] board, bool whiteTurn)
         {
             Console.Write("Notation: ");
             string input = Console.ReadLine();
@@ -206,12 +206,22 @@ namespace NetChess
         {
             boardPosition[] board = initialiseBoard();
             piece[] pieces = initialisePieces();
+            int turn = 1;
+            bool whiteTurn;
             // Declaration
 
-            Console.Clear();
-            board = getPieces(pieces, board);
-            displayBoard(board);
-            pieces = moveAlgebraic(pieces, board);
+            while(true)
+            {
+                if (turn % 2 == 0)
+                    whiteTurn = false;
+                else whiteTurn = true;
+
+                // Ablauf
+                Console.Clear();
+                board = getPieces(pieces, board);
+                displayBoard(board);
+                pieces = moveAlgebraic(pieces, board, whiteTurn);
+            }
         }
     }
 }
