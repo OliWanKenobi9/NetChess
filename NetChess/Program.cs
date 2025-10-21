@@ -141,7 +141,7 @@ namespace NetChess
                         symbol = " B ";
                         break;
                     case pieceType.Knight:
-                        symbol = " H ";
+                        symbol = " N ";
                         break;
                     case pieceType.Rook:
                         symbol = " R ";
@@ -176,18 +176,8 @@ namespace NetChess
 
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("Pawn: P | Bishop: B | Knight: H | Rook: R | Queen: Q | King: K");
+            Console.WriteLine("Pawn: P | Bishop: B | Knight: N | Rook: R | Queen: Q | King: K");
         }
-
-        static piece[] moveAlgebraic(piece[] pieces, boardPosition[] board, bool whiteTurn)
-        {
-            Console.Write("Notation: ");
-            string input = Console.ReadLine();
-
-
-            return pieces;
-        }
-
         static boardPosition[] getPieces(piece[] pieces, boardPosition[] board)
         {
             for(int i = 0; i < board.Length; i++)
@@ -202,6 +192,20 @@ namespace NetChess
             }
             return board;
         }
+        static piece[] move(piece[] pieces, boardPosition[] board, bool whiteTurn)
+        /* PGN Notation: [x1, y1] [x2, y2]
+         * e2 e4
+         * a5 a6
+         * c3 g3
+         */
+        {
+            Console.Write("Notation: ");
+            string input = Console.ReadLine();
+
+
+            return pieces;
+        }
+
         static void Main(string[] args)
         {
             boardPosition[] board = initialiseBoard();
@@ -220,7 +224,7 @@ namespace NetChess
                 Console.Clear();
                 board = getPieces(pieces, board);
                 displayBoard(board);
-                pieces = moveAlgebraic(pieces, board, whiteTurn);
+                pieces = move(pieces, board, whiteTurn);
             }
         }
     }
