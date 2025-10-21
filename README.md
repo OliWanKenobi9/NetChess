@@ -12,9 +12,7 @@ The program uses the PGN notation.
 Examples:
 
 e2 e4
-
 a5 a6
-
 c3 g3
 
 ## Piece Types and Abbreviations
