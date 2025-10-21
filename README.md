@@ -10,8 +10,11 @@ The program uses the PGN notation.
 [x1, y1] [x2,y2]
 
 Examples:
+
 e2 e4
+
 a5 a6
+
 c3 g3
 
 ## Piece Types and Abbreviations
