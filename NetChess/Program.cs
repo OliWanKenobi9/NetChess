@@ -199,6 +199,7 @@ namespace NetChess
          * c3 g3
          */
         {
+            string input, in1, in2;
             Console.Write("Notation: ");
             string input = Console.ReadLine();
 
