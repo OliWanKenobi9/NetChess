@@ -17,8 +17,11 @@ Rook: R
 Queen: Q
 King: K
 
-| Piece        | Abbreviation           | 
-| ------------- |:-------------:|
-| Pawn      | P |
-| Bishop      | B      |
-| Knight | H      |
+| Piece | Abbreviation| 
+| --- |--- |
+| Pawn | P |
+| Bishop | B |
+| Knight | N |
+| Rook | R |
+| Queen | Q |
+| King | K |
