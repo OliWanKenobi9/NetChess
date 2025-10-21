@@ -18,7 +18,7 @@ Queen: Q
 King: K
 
 | Piece | Abbreviation| 
-| --- |--- |
+| --- | --- |
 | Pawn | P |
 | Bishop | B |
 | Knight | N |
