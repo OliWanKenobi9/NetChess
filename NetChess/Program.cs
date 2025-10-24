@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetChess
 {
@@ -257,8 +252,8 @@ namespace NetChess
                     response.move.x = -1;
                     break;
             }
-
-            response.start.y = Convert.ToInt32(input[1]);
+            
+            response.start.y  = (int)char.GetNumericValue(input[1]);
 
             if (response.start.y < 1 || response.start.y > 8)
                 response.start.y = -1;
@@ -293,8 +288,8 @@ namespace NetChess
                     response.move.x = -1;
                     break;
             }
-
-            response.move.y = Convert.ToInt32(input[4]);
+            
+            response.move.y  = (int)char.GetNumericValue(input[1]);
 
             if (response.move.y < 1 || response.move.y > 8)
                 response.move.y = -1;
