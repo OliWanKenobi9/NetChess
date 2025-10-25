@@ -186,12 +186,12 @@ namespace NetChess
             return board;
         }
         static Piece[] NotationMove(Piece[] pieces, BoardPosition[] board, bool whiteTurn)
-        /* PGN Notation: [x1, y1] [x2, y2]
-         * e2 e4
-         * a5 a6
-         * c3 g3
-         */
         {
+            /* PGN Notation: [x1, y1] [x2, y2]
+             * e2 e4
+             * a5 a6
+             * c3 g3
+             */
             string input;
             (int, int) notationFracStart, notationFracMove;
 
@@ -212,10 +212,10 @@ namespace NetChess
             return pieces;
         }
         static ((int, int) start, (int, int) move) NotationFraction(string input)
-        /* Split input into 2 Tulips: ((<notationFrac1>), (<notationFrac2>))
-         * Use Item1/Item2 for notationFrac1/notationFrac2
-         */
         {
+            /* Split input into 2 Tulips: ((<notationFrac1>), (<notationFrac2>))
+             * Use Item1/Item2 for notationFrac1/notationFrac2
+             */
             ((int x, int y) start, (int x, int y) move) response;
 
             response = ((-1, -1), (-1, -1));
