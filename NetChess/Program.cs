@@ -185,115 +185,6 @@ namespace NetChess
             }
             return board;
         }
-        static Piece[] NotationMove(Piece[] pieces, BoardPosition[] board, bool whiteTurn)
-        {
-            /* PGN Notation: [x1, y1] [x2, y2]
-             * e2 e4
-             * a5 a6
-             * c3 g3
-             */
-            string input;
-            (int, int) notationFracStart, notationFracMove;
-
-            Console.Write("Notation: ");
-            input = Console.ReadLine();
-
-            ((int x, int y) start, (int x, int y) move) inputFractured = NotationFraction(input);
-            if (inputFractured.start.x == -1 || inputFractured.start.y == -1 || inputFractured.move.x == -1 || inputFractured.move.x == -1)
-            {
-                Console.WriteLine("Invalid Input.");
-                return null;
-            }
-            notationFracStart = inputFractured.start;
-            notationFracMove = inputFractured.move;
-
-            
-
-            return pieces;
-        }
-        static ((int, int) start, (int, int) move) NotationFraction(string input)
-        {
-            /* Split input into 2 Tulips: ((<notationFrac1>), (<notationFrac2>))
-             * Use Item1/Item2 for notationFrac1/notationFrac2
-             */
-            ((int x, int y) start, (int x, int y) move) response;
-
-            response = ((-1, -1), (-1, -1));
-
-            switch (input[0])
-            {
-                case 'a':
-                    response.start.x = 1;
-                    break;
-                case 'b':
-                    response.start.x = 2;
-                    break;
-                case 'c':
-                    response.start.x = 3;
-                    break;
-                case 'd':
-                    response.start.x = 4;
-                    break;
-                case 'e':
-                    response.start.x = 5;
-                    break;
-                case 'f':
-                    response.start.x = 6;
-                    break;
-                case 'g':
-                    response.start.x = 7;
-                    break;
-                case 'h':
-                    response.start.x = 8;
-                    break;
-                default:
-                    response.move.x = -1;
-                    break;
-            }
-            
-            response.start.y  = (int)char.GetNumericValue(input[1]);
-
-            if (response.start.y < 1 || response.start.y > 8)
-                response.start.y = -1;
-
-            switch (input[3])
-            {
-                case 'a':
-                    response.move.x = 1;
-                    break;
-                case 'b':
-                    response.move.x = 2;
-                    break;
-                case 'c':
-                    response.move.x = 3;
-                    break;
-                case 'd':
-                    response.move.x = 4;
-                    break;
-                case 'e':
-                    response.move.x = 5;
-                    break;
-                case 'f':
-                    response.move.x = 6;
-                    break;
-                case 'g':
-                    response.move.x = 7;
-                    break;
-                case 'h':
-                    response.move.x = 8;
-                    break;
-                default:
-                    response.move.x = -1;
-                    break;
-            }
-            
-            response.move.y  = (int)char.GetNumericValue(input[1]);
-
-            if (response.move.y < 1 || response.move.y > 8)
-                response.move.y = -1;
-
-            return response;
-        }
 
         static void Main(string[] args)
         {
@@ -310,7 +201,6 @@ namespace NetChess
                 Console.Clear();
                 board = GetPieces(pieces, board);
                 DisplayBoard(board);
-                pieces = NotationMove(pieces, board, whiteTurn);
                 turn++;
             } while (true); // Win condition
         }
