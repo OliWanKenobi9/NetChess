@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace NetChess
 {
@@ -195,7 +196,7 @@ namespace NetChess
             Console.Write("Input: ");
             input = Console.ReadLine();
             startStr = (input.Substring(0, 1), input.Substring(1, 1));
-            moveToStr = (input.Substring(0, 1), input.Substring(1, 1));
+            moveToStr = (input.Substring(2, 1), input.Substring(3, 1));
 
             start = (0, 0);
             moveTo = (0, 0);
@@ -262,18 +263,17 @@ namespace NetChess
             }
 
             startPieceIndex = StartIndexFind(pieces, start);
-            if(startPieceIndex != -1)
-                pieces[startPieceIndex].position = moveTo;
 
+
+            pieces[startPieceIndex].position = startPieceIndex != -1 ? moveTo : pieces[startPieceIndex].position;
+            // == if(startPieceIndex != -1){pieces[startPieceIndex].position = moveTo;}
 
             return pieces;
         }
         static int StartIndexFind(Piece[] pieces, (int, int) start) // -1: not found
         {
             for(int i = 0; i < pieces.Length; i++)
-            {
                 if (pieces[i].position == start) return i;
-            }
             return -1;
         }
         static void Main(string[] args)
