@@ -185,7 +185,82 @@ namespace NetChess
             }
             return board;
         }
+        static (BoardPosition[] board, Piece[] pieces) MovePiece(BoardPosition[] board, Piece[] pieces)
+        {
+            string input;
+            (string, string) startStr, moveToStr;
+            (int, int) start, moveTo;
+            Console.Write("Input: ");
+            input = Console.ReadLine();
+            startStr = (input.Substring(0, 1), input.Substring(1, 1));
+            moveToStr = (input.Substring(0, 1), input.Substring(1, 1));
 
+            switch(startStr.Item1.ToLower())
+            {
+                case "a":
+                    start.Item1 = 1;
+                    break;
+                case "b":
+                    start.Item1 = 2;
+                    break;
+                case "c":
+                    start.Item1 = 3;
+                    break;
+                case "d":
+                    start.Item1 = 4;
+                    break;
+                case "e":
+                    start.Item1 = 5;
+                    break;
+                case "f":
+                    start.Item1 = 6;
+                    break;
+                case "g":
+                    start.Item1 = 7;
+                    break;
+                case "h":
+                    start.Item1 = 8;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input (Start)");
+                    break;
+            }
+
+            switch (moveToStr.Item1.ToLower())
+            {
+                case "a":
+                    moveTo.Item1 = 1;
+                    break;
+                case "b":
+                    moveTo.Item1 = 2;
+                    break;
+                case "c":
+                    moveTo.Item1 = 3;
+                    break;
+                case "d":
+                    moveTo.Item1 = 4;
+                    break;
+                case "e":
+                    moveTo.Item1 = 5;
+                    break;
+                case "f":
+                    moveTo.Item1 = 6;
+                    break;
+                case "g":
+                    moveTo.Item1 = 7;
+                    break;
+                case "h":
+                    moveTo.Item1 = 8;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input (Move)");
+                    break;
+            }
+
+            Console.WriteLine($"{start.Item1}, {moveTo.Item1}");
+
+            return (board, pieces);
+        }
         static void Main(string[] args)
         {
             BoardPosition[] board = InitialiseBoard();
