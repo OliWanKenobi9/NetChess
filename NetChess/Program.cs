@@ -185,15 +185,20 @@ namespace NetChess
             }
             return board;
         }
-        static (BoardPosition[] board, Piece[] pieces) MovePiece(BoardPosition[] board, Piece[] pieces)
+        static Piece[] MovePiece(Piece[] pieces)
         {
             string input;
             (string, string) startStr, moveToStr;
             (int, int) start, moveTo;
+            int startPieceIndex;
+
             Console.Write("Input: ");
             input = Console.ReadLine();
             startStr = (input.Substring(0, 1), input.Substring(1, 1));
             moveToStr = (input.Substring(0, 1), input.Substring(1, 1));
+
+            start = (0, 0);
+            moveTo = (0, 0);
 
             switch(startStr.Item1.ToLower())
             {
@@ -225,7 +230,6 @@ namespace NetChess
                     Console.WriteLine("Invalid Input (Start)");
                     break;
             }
-
             switch (moveToStr.Item1.ToLower())
             {
                 case "a":
@@ -257,9 +261,20 @@ namespace NetChess
                     break;
             }
 
-            Console.WriteLine($"{start.Item1}, {moveTo.Item1}");
+            startPieceIndex = StartIndexFind(pieces, start);
+            if(startPieceIndex != -1)
+                pieces[startPieceIndex].position = moveTo;
 
-            return (board, pieces);
+
+            return pieces;
+        }
+        static int StartIndexFind(Piece[] pieces, (int, int) start) // -1: not found
+        {
+            for(int i = 0; i < pieces.Length; i++)
+            {
+                if (pieces[i].position == start) return i;
+            }
+            return -1;
         }
         static void Main(string[] args)
         {
@@ -276,6 +291,7 @@ namespace NetChess
                 Console.Clear();
                 board = GetPieces(pieces, board);
                 DisplayBoard(board);
+                pieces = MovePiece(pieces);
                 turn++;
             } while (true); // Win condition
         }
